@@ -1,22 +1,21 @@
 set nocompatible              
-filetype off                  
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-	Plugin 'VundleVim/Vundle.vim' 
+	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'frazrepo/vim-rainbow'
 	Plugin 'mattn/emmet-vim'
 	Plugin 'scrooloose/syntastic'	
 	Plugin 'dense-analysis/ale'
-	Plugin 'dracula/vim', { 'name': 'dracula' }
+	Plugin 'dracula/vim', { 'name': 'dracula'}
+	Plugin 'srcery-colors/srcery-vim', { 'name': 'srcery'}
+	Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end() 
+
 filetype plugin indent on
-
-
 syntax on
 colorscheme dracula
-set background=dark
-"color slate
 set clipboard=unnamed
 set number
 set autoread
@@ -31,9 +30,14 @@ set nowrap
 set noerrorbells
 set backspace=indent,eol,start
 set noswapfile
-set rtp+=~/tabnine-vim
+"set rtp+=~/tabnine-vim
 set incsearch
 hi SpellBad cterm=underline ctermfg=red ctermbg=NONE
+
+"This is to compile and run the c++ code
+nnoremap <C-c> :!g++ -o  %:r.out % -std=c++11<Enter>
+nnoremap <C-r> :!./%:r.out<Enter>
+
 
 "Automatically opens Nerdtree
 "autocmd VimEnter * NERDTree | wincmd p
@@ -46,8 +50,4 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 "For the rainbow brackets 
-au FileType c,cpp,objc,objcpp call rainbow#load()
-
-"This is to compile and run the c++ code
-nnoremap <C-c> :!g++ -o  %:r.out % -std=c++11<Enter>
-nnoremap <C-r> :!./%:r.out
+" au FileType c,cpp,objc,objcpp call rainbow#load()
